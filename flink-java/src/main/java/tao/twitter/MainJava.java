@@ -9,7 +9,7 @@ import java.util.Properties;
 /**
  * Created by xinrui on 06/06/2018.
  */
-public class Main {
+public class MainJava {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 

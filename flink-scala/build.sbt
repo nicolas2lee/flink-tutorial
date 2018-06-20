@@ -13,12 +13,20 @@ ThisBuild / scalaVersion := "2.11.12"
 
 lazy val root = (project in file(".")).
   settings(
-    libraryDependencies ++= flinkDependencies
+    libraryDependencies ++= flinkDependencies,
+    libraryDependencies += twitterConnectorLogDependencies,
+    libraryDependencies += playJsonDependencies,
+    libraryDependencies += scalaTestDependencies
   )
 val flinkVersion = "1.5.0"
 val flinkDependencies = Seq(
   "org.apache.flink" %% "flink-scala" % flinkVersion % "provided",
+  "org.apache.flink" %% "flink-connector-twitter" % flinkVersion,
   "org.apache.flink" %% "flink-streaming-scala" % flinkVersion % "provided")
+
+val twitterConnectorLogDependencies = "commons-logging" % "commons-logging" % "1.2"
+val playJsonDependencies = "com.typesafe.play" %% "play-json" % "2.6.9"
+val scalaTestDependencies = "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 
 assembly / mainClass := Some("tao.Job")
 

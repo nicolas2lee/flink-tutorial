@@ -1,4 +1,4 @@
-package tao
+package tao.defaultexamples
 
 /**
   * Licensed to the Apache Software Foundation (ASF) under one

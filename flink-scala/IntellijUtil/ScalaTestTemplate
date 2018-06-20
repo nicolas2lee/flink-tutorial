@@ -1,0 +1,13 @@
+#if ((${PACKAGE_NAME} && ${PACKAGE_NAME} != ""))package ${PACKAGE_NAME} #end
+
+import org.scalatest.concurrent.ScalaFutures
+import org.scalatest.{Matchers, FunSpec}
+
+class ${NAME} extends FunSpec with Matchers with MockitoSugar with ScalaFutures {
+
+  describe("_") {
+    it("_") {
+
+    }
+  }
+}
