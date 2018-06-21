@@ -1,11 +1,14 @@
 package tao.twitter.model
 
-import java.time.LocalDateTime
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.{JsonIgnoreProperties, JsonProperty}
 
-class Twitter(created: LocalDateTime, text: String, source: String) {
+@JsonIgnoreProperties(ignoreUnknown = true)
+class Twitter(@JsonProperty("created_at") val created: String,
+              @JsonProperty("text") val text: String,
+              @JsonProperty("source") val source: String) {
   val entities: List[Entity] = Nil
 
-  override def toString: String = "created=%s, text=%s, source=%s, entities=%s".format(created, text, source)
+  override def toString: String = "created=%s, text=%s, source=%s, entities=%s".format(created, text, source, entities)
 
   class Entity {
     val hashtags: List[String] = Nil

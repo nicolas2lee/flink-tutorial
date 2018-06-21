@@ -3,9 +3,10 @@ package tao.twitter
 import java.util.Properties
 
 import com.typesafe.config.ConfigFactory
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.flink.streaming.api.scala.{StreamExecutionEnvironment, _}
 import org.apache.flink.streaming.connectors.twitter.TwitterSource
-import play.api.libs.json.Json
+import tao.twitter.model.Twitter
 
 
 object MainScala {
@@ -20,9 +21,11 @@ object MainScala {
     props.setProperty(TwitterSource.TOKEN, TWITTERSOURCE.getString("TOKEN"))
     props.setProperty(TwitterSource.TOKEN_SECRET, TWITTERSOURCE.getString("TOKEN_SECRET"))
 
+    val objectMapper = new ObjectMapper();
+
     val streamSource = env.addSource(new TwitterSource(props))
-    streamSource.map(Json.parse(_)).print()
-    //streamSource.print()
+    streamSource.map(objectMapper.readValue(_, classOf[Twitter])).print()
+    //.print()
 
     env.execute("flink scala twitter stream")
   }

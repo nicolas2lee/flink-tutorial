@@ -15,7 +15,7 @@ lazy val root = (project in file(".")).
   settings(
     libraryDependencies ++= flinkDependencies,
     libraryDependencies += twitterConnectorLogDependencies,
-    libraryDependencies += playJsonDependencies,
+    libraryDependencies += jacksonDependencies,
     libraryDependencies += scalaTestDependencies
   )
 val flinkVersion = "1.5.0"
@@ -26,6 +26,7 @@ val flinkDependencies = Seq(
 
 val twitterConnectorLogDependencies = "commons-logging" % "commons-logging" % "1.2"
 val playJsonDependencies = "com.typesafe.play" %% "play-json" % "2.6.9"
+val jacksonDependencies = "com.fasterxml.jackson.core" % "jackson-core" % "2.9.6"
 val scalaTestDependencies = "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 
 assembly / mainClass := Some("tao.Job")
